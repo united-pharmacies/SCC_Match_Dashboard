@@ -483,6 +483,29 @@ const ALIAS_IMG = {
   'vitamin c':'vitamin c',         'zinc':'zinc',
 };
 
+const LOCAL_IMAGE_FILE = {
+  'alpha arbutin':'Alpha Arbutin.png',
+  'azelaic acid':'Azelaic Acid.png',
+  'centella':'Centella Asiactica.png',
+  'ceramides':'Ceramides.png',
+  'enoxolone':'Enoxolone.png',
+  'glycolic':'Glycolic Acid.png',
+  'hyaluronic':'Hyaluronic Acid.png',
+  'licorice':'Licorice Extract.png',
+  'niacinamide':'Niacinamed.png',
+  'peptides':'Peptides.png',
+  'petrolatum':'Pertolatum.png',
+  'retinol':'Retinol.png',
+  'salicylic':'Salicylic Acid.png',
+  'silicones':'Silicones.png',
+  'squalane':'Squalane.png',
+  'sulfur':'Sulfur.png',
+  'tea tree':'Tea Tree Oil.png',
+  'urea':'Urea.png',
+  'vitamin c':'Vitamin C.png',
+  'zinc':'Zinc.png',
+};
+
 let sortedRows = [], modalIdx = null, modalChart = null, imageMap = {};
 
 const $ = id => document.getElementById(id);
@@ -696,7 +719,8 @@ function populateModal(){
     </tr>`).join('');
   $('nav-prev').disabled=rank===0; $('nav-next').disabled=rank===sortedRows.length-1;
   $('nav-pos').textContent=`${rank+1} of ${sortedRows.length}`;
-  const imgUrl=imageMap[row.correct.trim().toLowerCase()]||null;
+  const answerKey = row.correct.trim().toLowerCase();
+  const imgUrl = imageMap[answerKey] || LOCAL_IMAGE_FILE[answerKey] || null;
   const imgPanel=$('img-panel'); const imgCols=$('modal-cols');
   if(imgUrl){
     $('img-panel-head').textContent=row.correct+' — Product Label';
